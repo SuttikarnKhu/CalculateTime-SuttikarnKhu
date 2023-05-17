@@ -1,21 +1,31 @@
 #include <iostream>
 using namespace std;
 #include <iomanip>
-#include "Time.h"
-void getTime(int&,int&);
-int subtract(int,int,int,int);
-int subtract(int,int);
 
-int main(){
-  int h1,m1, h2,m2,h3,m3;
-  cout<<"What time was it?"<<endl;
-  getTime(h1,m1);
-  cout<<"What time is it now?\n";
-  getTime(h2,m2);
+void getTime(int &h,int &m){
+  char a;
+  cout << "Input hour and min (hr:mn): ";
+  cin >> h >> a >> m;
+}
 
-  cout<<"Time diff is ";
-  h3=subtract(h1,m1,h2,m2); 
-  m3=subtract(m1,m2); 
-  cout<<setfill('0')<<setw(2)<<h3<<":";
-  cout<<setfill('0')<<m3<<endl;
+int subtract(int h1, int m1, int h2,int m2){
+  int h,m;
+  m=m2-m1;
+  h=h2-h1;
+  if(m<0){
+    h-=1;
+  }
+  if(h<0){
+    h+=24;
+  }
+  return h;
+}
+
+int subtract(int m1, int m2){
+  int m;
+  m=m2-m1;
+  if(m<0){
+    m+=60;
+  }
+  return m;
 }
